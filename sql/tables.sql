@@ -2,7 +2,8 @@ create table users (
     user_id serial primary key,
     FName varchar(25),
     LName varchar(25),
-    user_name varchar(30),
+    user_name varchar(30) unique,
+    password varchar(8),
     email varchar(35),
     phone bigint
 );
@@ -44,7 +45,8 @@ create table bus_route(
     dep_loc varchar(20),
     dep_time time,
     arv_loc varchar(20),
-    arv_time time
+    arv_time time,
+    arv_date date
 );
 
 create table passenger_res(
