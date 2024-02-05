@@ -40,13 +40,14 @@ create table passenger(
 create table bus_route(
     route_id serial primary key,
     bus_id varchar(10) references bus(bus_id),
-    dep_date date,
     cost int,
     dep_loc varchar(20),
+    dep_date date,
     dep_time time,
     arv_loc varchar(20),
     arv_time time,
-    arv_date date
+    arv_date date,
+    nbooks int
 );
 
 create table passenger_res(

@@ -1,0 +1,156 @@
+import random
+transport_entries = [
+    {"name": "Shivaji Transports",
+        "address": "123 Main Street, Mumbai, Maharashtra, 400001", "contact": 9876543210},
+    {"name": "SwiftTransit", "address": "456 Transport Avenue, Delhi, 110001",
+        "contact": 8765432109},
+    {"name": "Speedy Pvt Ltd",
+        "address": "789 Cargo Lane, Bangalore, Karnataka, 560001", "contact": 7654321098},
+    {"name": "IndiaFreight", "address": "101 Logistics Road, Chennai, Tamil Nadu, 600001",
+        "contact": 6543210987},
+    {"name": "MetroMovers ", "address": "202 Express Lane, Kolkata, West Bengal, 700001",
+        "contact": 5432109876},
+    {"name": "Coastal Transport",
+        "address": "303 Shipping Street, Goa, 403001", "contact": 4321098765},
+    {"name": "Rajdhani Transporters",
+        "address": "404 Fast Track Lane, Pune, Maharashtra, 411001", "contact": 3210987654},
+    {"name": "Himalayan Haulers Ltd",
+        "address": "505 Mountain Road, Shimla, Himachal Pradesh, 171001", "contact": 2109876543},
+    {"name": "SilkRoute Co.",
+        "address": "606 Silk Street, Jaipur, Rajasthan, 302001", "contact": 1098765432},
+    {"name": "Ganges travels",
+        "address": "707 Riverfront Road, Varanasi, Uttar Pradesh, 221001", "contact": 9876543210},
+    {"name": "Deccan Express Transport",
+        "address": "808 Plateau Avenue, Hyderabad, Telangana, 500001", "contact": 8765432109},
+    {"name": "Bengal Tiger Transporters",
+        "address": "909 Jungle Lane, Kolkata, West Bengal, 700002", "contact": 7654321098},
+    {"name": "SpiceRoutes ", "address": "1001 Spice Street, Kochi, Kerala, 682001",
+        "contact": 6543210987},
+    {"name": "Taj travel Services",
+        "address": "1102 Palace Road, Agra, Uttar Pradesh, 282001", "contact": 5432109876},
+    {"name": "Lotus india Ltd",
+        "address": "1203 Blossom Lane, Ahmedabad, Gujarat, 380001", "contact": 4321098765}
+]
+# for comp in transport_entries:
+#     print(f"insert into transport_comp(comp_name, comp_address,comp_contact) values ('{
+#           comp["name"]}', '{comp["address"]}', {comp["contact"]});")
+cities = [
+    ["Mumbai", "Maharashtra"],
+    ["Delhi", "Delhi"],
+    ["Bangalore", "Karnataka"],
+    ["Chennai", "Tamil Nadu"],
+    ["Kolkata", "West Bengal"],
+    ["Goa", "Goa"],
+    ["Pune", "Maharashtra"],
+    ["Shimla", "Himachal Pradesh"],
+    ["Jaipur", "Rajasthan"],
+    ["Varanasi", "Uttar Pradesh"],
+    ["Hyderabad", "Telangana"],
+    ["Mandarmani", "West Bengal"],
+    ["Kochi", "Kerala"],
+    ["Agra", "Uttar Pradesh"],
+    ["Ahmedabad", "Gujarat"]
+]
+# regs = ["MH", "DL", "KA", "TN", "WB", "GA", "MH",
+#         "HP", "RJ", "UP", "TS", "WB", "KL", "UP", "GJ"]
+#
+# buses = []
+# temp = 0
+# for reg in regs:
+#     for i in range(0, len(regs) - 1):
+#         bus_id = reg
+#         comp_id = 361 + temp
+#         ext = str(chr(random.randrange(65, 91)) +
+#                   chr(random.randrange(65, 91)))
+#         bus_id = bus_id+str(random.randrange(1, 99)) + ext + \
+#             str(random.randrange(1111, 9999))
+#         capacity = random.choice([35, 40, 45, 50])
+#         buses.append([comp_id, bus_id, capacity])
+#     temp += 1
+#
+# for bus in buses:
+#     print(f"insert into bus(comp_id, bus_id,capacity) values('{
+#           bus[0]}', '{bus[1]}', {bus[2]});")
+buses = [
+    "MH95ZB4159", "MH5XW7926", "MH15ZA9793", "MH84VP5543", "MH33CA8708",
+    "MH96MY2087", "MH60NY1138", "MH77CF1458", "MH91IM7419", "MH87QH9148",
+    "MH22FJ7071", "MH25MX3466", "MH88IJ3891", "MH38HI6114", "DL86KM7559",
+    "DL70DV3231", "DL28GP6486", "DL67KK2664", "DL20FC6027", "DL53ER5384",
+    "DL69BN6837", "DL58DT5716", "DL46XW9558", "DL81FW3005", "DL3LL4360",
+    "DL38VR5143", "DL92VU4044", "DL96QY9884", "KA35ZF5878", "KA10CV8083",
+    "KA13DS2545", "KA95NF6801", "KA33OH8709", "KA17QE9086", "KA41AS4418",
+    "KA19TR2264", "KA35IN4096", "KA10SP7475", "KA97RH6862", "KA72YO4815",
+    "KA1XS1535", "KA73CA2656", "TN35RD8524", "TN69CT5599", "TN42XP2622",
+    "TN47TO3173", "TN62OL4122", "TN21YZ9831", "TN57BB1763", "TN89KK3669",
+    "TN58AB4936", "TN94MQ6728", "TN8AO7700", "TN47JJ2156", "TN1AJ2105",
+    "TN96IS6826", "WB83ZI3151", "WB57YF6938", "WB84EZ2143", "WB3ER2934",
+    "WB48NY9228", "WB51JQ3704", "WB94IW4641", "WB96PP6894", "WB3DV1589",
+    "WB94BN5304", "WB61ZQ7304", "WB4IY7674", "WB72BS2309", "WB41FU2738",
+    "GA84ZJ1806", "GA85KO9601", "GA24ND6927", "GA53HM8344", "GA54DI5805",
+    "GA86CU6816", "GA26FN7034", "GA18GQ5043", "GA93NO2286", "GA13EO6298",
+    "GA25CR2384", "GA74ZB4174", "GA11WK2808", "GA47IO2617", "MH34VT2101",
+    "MH38FH6576", "MH11PG3406", "MH85YQ2455", "MH93NJ1777", "MH30BV9721",
+    "MH86PD2836", "MH91GC6918", "MH34HG3100", "MH83AY4344", "MH34XW9086",
+    "MH94PV7571", "MH49OF3197", "MH49IA2327", "HP29ZX4736", "HP19UP2836",
+    "HP65UY8630", "HP21HH8041", "HP72XG4764", "HP19RZ3331", "HP55NU8247",
+    "HP73WP8330", "HP87ZD3979", "HP52HX7974", "HP66QO8503", "HP49EF6264",
+    "HP96ZB5677", "HP87QY2888", "RJ55LO3084", "RJ45VU4293", "RJ25VC6337",
+    "RJ3SB7875", "RJ12VV2095", "RJ19NR3412", "RJ92XH8370", "RJ28YR9155",
+    "RJ33NY3226", "RJ30DR6915", "RJ1RD2779", "RJ91ZK6464", "RJ88VS2674",
+    "RJ27OR2449", "UP50KN3176", "UP18FI2878", "UP59BF7242", "UP57BW8480",
+    "UP41AE3045", "UP83SC8472", "UP31DA6378", "UP80XF7096", "UP34SE9191",
+    "UP2JM4689", "UP13PC4607", "UP44BS2878", "UP80LY2100", "UP19GO2108",
+    "TS35JM2395", "TS53RI2212", "TS42OB1369", "TS98VI4022", "TS67UV3054",
+    "TS36UQ4141", "TS79HE3695", "TS17RZ5738", "TS82KW9516", "TS81KX9875",
+    "TS47GA2601", "TS4LX1766", "TS15OJ6621", "TS24KD8539", "WB75EO6195",
+    "WB28TU5071", "WB5SU2273", "WB22OZ2294", "WB57CQ2615", "WB41XS2794",
+    "WB42UA6807", "WB36GR8555", "WB40SO2216", "WB25BH6384", "WB74NC8271",
+    "WB6DF4332", "WB65KR7773", "WB18ID1581", "KL32VY8320", "KL19VN3116",
+    "KL57TD6404", "KL19JQ8465", "KL58GM4024", "KL96TZ9953", "KL23MF8999",
+    "KL11XS1656", "KL78TG7102", "KL6GN3810", "KL11PT7162", "KL13DP1682",
+    "KL85EM9445", "KL50AT2345", "UP63JD7527", "UP27KB6227", "UP50CE9739",
+    "UP13EU8997", "UP53WC4077", "UP48TN7918", "UP97UH7430", "UP73NX2503",
+    "UP52EX8846", "UP12OG8413", "UP5DY1157", "UP13BR6033", "UP36RV3957",
+    "UP44QZ9247", "GJ59IO4172", "GJ90XE1384", "GJ7MX4922", "GJ20ER7032",
+    "GJ95HE9541", "GJ70CK5682", "GJ84VE3826", "GJ44HX1878", "GJ9FI5082",
+    "GJ24HD9147", "GJ93ZK4686", "GJ54JW9496", "GJ85FC2028", "GJ21HJ9989"
+]
+
+bus_routes = []
+bus_id = 0
+for i in range(0, len(cities)):
+    for j in range(0, len(cities)):
+        if i == j:
+            continue
+        else:
+            bus = buses[bus_id]
+            cost = random.choice([450, 750, 100, 1200, 1500, 1750, 1800, 2500])
+            dep_loc = cities[i][0]
+            day = random.randrange(1, 27)
+            if day < 9:
+                d_day = "0" + str(day)
+            else:
+                d_day = str(day)
+            date = "2024-" + random.choice(["02", "03"])+"-"
+            dep_date = date + d_day
+            dep_time = str(random.randrange(1, 24)) + ":" + \
+                str(random.randrange(0, 60, 10)) + ":00"
+            arv_time = str(random.randrange(1, 24)) + ":" + \
+                str(random.randrange(0, 60, 10)) + ":00"
+            arv_loc = cities[j][0]
+            if (day+2) < 9:
+                a_day = "0" + str(day + 2)
+            else:
+                a_day = str(day + 2)
+            arv_date = date + a_day
+            nbooks = 0
+            bus_routes.append([bus, cost, dep_loc, dep_date,
+                              dep_time, arv_loc, arv_date, arv_time, nbooks])
+        bus_id += 1
+
+
+for route in bus_routes:
+    print(f"insert into bus_route(bus_id, cost, dep_loc, dep_date, dep_time, arv_loc, arv_date, arv_time, nbooks) values('{
+          route[0]}', {route[1]}, '{route[2]}', date'{route[3]}', time'{route[4]}', '{route[5]}', date'{route[6]}', time'{route[7]}', {route[8]});")
+print(len(bus_routes))
+# print(len(buses), len(bus_routes))

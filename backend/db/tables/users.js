@@ -62,19 +62,15 @@ class Users {
                             values (${fname}, ${lname}, ${user_name},${password}, ${email}, ${phone});`;
                 }
             } catch (error) {
-                if (error instanceof postgres.PostgresError) {
-                    console.log(`PostgresError : ${error.message}`);
-                } else {
-                    console.error(error);
-                }
+                throw error;
             }
         } else {
             throw new Error("invalid email");
         }
     }
-    async deleteUser(user_id, user_name) {
+    async deleteUser(user_name) {
         try {
-            await sql`delete from users where user_name = ${user_name} and user_id = ${user_id};`;
+            await sql`delete from users where user_name = ${user_name};`;
         } catch (error) {
             if (error instanceof postgres.PostgresError) {
                 console.log(`PostgresError : ${error.message}`);

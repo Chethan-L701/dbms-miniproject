@@ -1,0 +1,15 @@
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Shivaji Transports', '123 Main Street, Mumbai, Maharashtra, 400001', 9876543210);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('SwiftTransit', '456 Transport Avenue, Delhi, 110001', 8765432109);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Speedy Pvt Ltd', '789 Cargo Lane, Bangalore, Karnataka, 560001', 7654321098);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('IndiaFreight', '101 Logistics Road, Chennai, Tamil Nadu, 600001', 6543210987);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('MetroMovers ', '202 Express Lane, Kolkata, West Bengal, 700001', 5432109876);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Coastal Transport', '303 Shipping Street, Goa, 403001', 4321098765);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Rajdhani Transporters', '404 Fast Track Lane, Pune, Maharashtra, 411001', 3210987654);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Himalayan Haulers Ltd', '505 Mountain Road, Shimla, Himachal Pradesh, 171001', 2109876543);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('SilkRoute Co.', '606 Silk Street, Jaipur, Rajasthan, 302001', 1098765432);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Ganges travels', '707 Riverfront Road, Varanasi, Uttar Pradesh, 221001', 9876543210);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Deccan Express Transport', '808 Plateau Avenue, Hyderabad, Telangana, 500001', 8765432109);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Bengal Tiger Transporters', '909 Jungle Lane, Kolkata, West Bengal, 700002', 7654321098);       
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('SpiceRoutes ', '1001 Spice Street, Kochi, Kerala, 682001', 6543210987);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Taj travel Services', '1102 Palace Road, Agra, Uttar Pradesh, 282001', 5432109876);
+insert into transport_comp(comp_name, comp_address,comp_contact) values ('Lotus india Ltd', '1203 Blossom Lane, Ahmedabad, Gujarat, 380001', 4321098765);
