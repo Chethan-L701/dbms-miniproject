@@ -29,11 +29,11 @@ userRoute.post("/create", async (request, response) => {
     let { fname, lname, username, email, phone, password } = request.body;
     if (
         (fname != "",
-        lname != "",
-        username != "",
-        email != "",
-        phone != 0,
-        password != "")
+            lname != "",
+            username != "",
+            email != "",
+            phone != 0,
+            password != "")
     ) {
         await users
             .insert(username, password, fname, lname, email, phone)
@@ -77,11 +77,11 @@ userRoute.put("/update/:username", async (request, response) => {
     let olddata = await dbquery.getUserDetails(username);
     if (
         (fname != "",
-        lname != "",
-        username != "",
-        email != "",
-        phone != 0,
-        password != "")
+            lname != "",
+            username != "",
+            email != "",
+            phone != 0,
+            password != "")
     ) {
         await users.updateFName(username, fname);
         await users.updateLName(username, lname);
@@ -111,4 +111,28 @@ userRoute.get("/res/:username", async (request, response) => {
                 error: error,
             });
         });
+});
+userRoute.get("/login/auth/:username/:password", async (request, response) => {
+    let username = request.params.username;
+    let password = request.params.password;
+    try {
+        let userinfo = await dbquery.getUserDetails(username);
+        if (userinfo.user_name == username && password == userinfo.password) {
+            return response.status(200).send({
+                message: "succesfully authenticated user",
+                auth: true,
+            });
+        } else {
+            return response.status(200).send({
+                message: "failed to authenticate",
+                auth: false,
+            });
+        }
+    } catch (error) {
+        return response.status(200).send({
+            message: "sometheing went wrong",
+            auth: false,
+            error: error,
+        });
+    }
 });

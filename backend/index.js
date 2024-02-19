@@ -2,11 +2,12 @@ import express, { json, request, response } from "express";
 import cors from "cors";
 
 import { userRoute } from "./routes/userRoute.js";
-
+import { busRoute } from "./routes/busRoute.js";
 const server = express();
 server.use(cors());
 server.use(json());
-server.use("/user", userRoute)
+server.use("/user", userRoute);
+server.use("/bus", busRoute);
 server.get("/", (request, response) => {
     return response.status(200).send({
         message: "connection to the server established succesfully.",

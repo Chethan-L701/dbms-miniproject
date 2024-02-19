@@ -9,12 +9,15 @@ export function LoginComponent({ loginStatus }) {
                 </button>
             </Link>
         );
-    } else {
-        let userName = JSON.parse(localStorage.getItem("user_info")).UserName;
+    } 
+    else {
+        let userName = JSON.parse(localStorage.getItem("user_info")).user_name;
         return (
-            <div >
-
+            <Link to = "/profile">
+            <div className="text-white w-[100px] flex m-3">
+                <BiUser className="pr-2" /> {userName}
             </div>
+            </Link>
         );
     }
 }

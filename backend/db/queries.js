@@ -13,9 +13,29 @@ class Query {
     }
     async getRouteByLoc(start, destination) {
         let result = await sql`
-            select c.comp_id, comp_name,b.bus_id,dep_loc,dep_date,dep_time, arv_loc, arv_date, arv_time, route_id
+            select c.comp_id, comp_name,b.bus_id,dep_loc,dep_date,dep_time, arv_loc, arv_date, arv_time, route_id, cost
             from transport_comp c, bus b, bus_route r
             where c.comp_id = b.comp_id and b.bus_id = r.bus_id and (dep_loc= ${start} and arv_loc = ${destination});
+        `;
+        let routes = [];
+        result.forEach((rec) => routes.push(rec));
+        return routes;
+    }
+    async getRouteByDep(departure) {
+        let result = await sql`
+            select r.route_id,c.comp_id, comp_name,b.bus_id,dep_loc,dep_date,dep_time, arv_loc, arv_date, arv_time, cost
+            from transport_comp c, bus b, bus_route r
+            where c.comp_id = b.comp_id and b.bus_id = r.bus_id and (dep_loc= ${departure});
+        `;
+        let routes = [];
+        result.forEach((rec) => routes.push(rec));
+        return routes;
+    }
+    async getRouteByArv(destination) {
+        let result = await sql`
+            select r.route_id, c.comp_id, comp_name,b.bus_id,dep_loc,dep_date,dep_time, arv_loc, arv_date, arv_time, cost
+            from transport_comp c, bus b, bus_route r
+            where c.comp_id = b.comp_id and b.bus_id = r.bus_id and (arv_loc= ${destination});
         `;
         let routes = [];
         result.forEach((rec) => routes.push(rec));
@@ -51,7 +71,9 @@ class Query {
     }
     async getPasswordForUser(user_name) {
         let password;
-        await this.getUserDetails(user_name).then((res) => password = res["password"])
+        await this.getUserDetails(user_name).then(
+            (res) => (password = res["password"]),
+        );
         return password;
     }
 }
