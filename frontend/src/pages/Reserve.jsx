@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavBar } from "../components/NavBar";
+import {Passenger} from "../components/Passenger"
 import axios from "axios";
 function parseZuluDateTime(dateTimeString, type) {
     // Create a Date object from the string, which handles the "Z" for UTC
@@ -102,6 +103,13 @@ export function Reserve({ route_id }) {
                     <button className="ml-8 bg-blue-300 pl-8 pr-8 p-2 rounded-md hover:bg-blue-400">
                         OK
                     </button>
+                </div>
+                <hr />
+                <div>{
+                        Array.from({ length: seats }, (x, i)=> i).map((x) => {
+                            return <Passenger key={x} user_id={user_info.user_id} bus_id={info.bus_id} route_id={info.route_id} cost={info.cost} />;
+                        })
+                    }
                 </div>
             </div>
         </div>

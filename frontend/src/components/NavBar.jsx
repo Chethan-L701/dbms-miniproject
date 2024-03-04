@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { FaInfo } from "react-icons/fa";
 import { BsTicketDetailedFill } from "react-icons/bs";
 import { FaMoneyCheck } from "react-icons/fa";
+import { MdManageHistory } from "react-icons/md";
 function PageIcon({pageType}) {
     if(pageType == "home"){
         return (
@@ -31,7 +32,11 @@ function PageIcon({pageType}) {
         return (
             <FaUser />
         )
-    }
+   } else if (pageType == "manage") {
+        return (
+            <MdManageHistory />
+        )    
+   }
 }
 export function NavBar({pageType}) {
     return (
@@ -49,7 +54,12 @@ export function NavBar({pageType}) {
                 </Link>
                 <Link to="/bookings">
                     <button className="font-medium p-2 pb-0 hover:border-b-4 hover:border-red-300">
-                        Book & Manage
+                        Book
+                    </button>
+                </Link>
+                <Link to="/manage">
+                    <button className="font-medium p-2 pb-0 hover:border-b-4 hover:border-red-300">
+                        Manage
                     </button>
                 </Link>
                 <Link to="/instructions">

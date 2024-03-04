@@ -54,9 +54,16 @@ class Query {
     }
     async getResDetailsForUser(user_name) {
         let result = await sql`
-            select res.res_id, br.bus_id, payment_id, res.res_date, pmt_date, p.fname, p.lname, br.dep_loc, br.dep_date, br.dep_time, br.arv_loc, br.arv_date, br.arv_time, amount, pmt_status 
+            select pr.seat_no,pr.route_id ,res.res_id, br.bus_id, payment_id, res.res_date, pmt_date, p.fname, p.lname, br.dep_loc, br.dep_date, br.dep_time, br.arv_loc, br.arv_date, br.arv_time, amount, pmt_status 
             from reservation res, passenger_res pr, users u, bus_route br, payment pmt, passenger p 
-            where u.user_id = res.user_id and br.bus_id = res.bus_id and u.user_name = ${user_name};
+            where u.user_id = res.user_id 
+                and br.bus_id = res.bus_id 
+                and p.passenger_id = pr.passenger_id 
+                and res.res_id = pr.res_id 
+                and res.res_id = p.res_id 
+                and p.seat_no = pr.seat_no 
+                and pmt.res_id = res.res_id 
+                and u.user_name = 'chethanl';
         `;
         let reserves = [];
         result.forEach((rec) => reserves.push(rec));
@@ -72,9 +79,38 @@ class Query {
     async getPasswordForUser(user_name) {
         let password;
         await this.getUserDetails(user_name).then(
-            (res) => (password = res["password"]),
+            (res) => (password = res["password"])
         );
         return password;
+    }
+    async getPassengerId(res_id) {
+        let passenger_id;
+        await sql`select passenger_id from passenger where res_id = ${res_id}`.then(
+            (res) => {
+                passenger_id = res.at(0)["passenger_id"];
+            }
+        );
+        return passenger_id;
+    }
+    async cancelReservation(res_id) {
+        await sql`
+            delete from passenger_res where res_id = ${res_id}
+        `;
+        await sql`delete from passenger where res_id = ${res_id}`;
+        await sql`delete from payment where res_id = ${res_id}`;
+        await sql`delete from reservation where res_id = ${res_id}`;
+    }
+    async getAllBookedSeats(route_id) {
+        let result = [];
+        await sql`
+            select seat_no from passenger_res where route_id = ${route_id}
+        `.then((res) => {
+            console.log(res);
+            res.forEach((rec) => {
+                result.push(rec.seat_no);
+            });
+        });
+        return result;
     }
 }
 export let dbquery = new Query();

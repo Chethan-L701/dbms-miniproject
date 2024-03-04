@@ -19,11 +19,11 @@ class Reservation {
         });
         return users;
     }
-    async insert(bus_id, user_id, date) {
+    async insert(res_id, bus_id, user_id, date) {
         try {
             await sql`
-                insert into reservation(bus_id, user_id, res_date)
-                values (${bus_id}, ${user_id}, ${date});
+                insert into reservation(res_id, bus_id, user_id, res_date)
+                values (${res_id}, ${bus_id}, ${user_id}, ${date});
             `;
         } catch (error) { }
     }

@@ -10,6 +10,7 @@ import { RouteInfo } from "./pages/RouteInfo";
 import "./App.css";
 import { Instructions } from "./pages/Instructions";
 import { Reserve } from "./pages/Reserve";
+import { Manage } from "./pages/Manage";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                         <Reserve route_id={localStorage.getItem("route_id")} />
                     }
                 ></Route>
+                <Route path="/manage" element={<Manage />}></Route>
             </Routes>
         </>
     );

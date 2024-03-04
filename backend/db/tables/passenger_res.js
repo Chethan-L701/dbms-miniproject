@@ -38,12 +38,19 @@ class PassegerRes {
     }
     async insert(passenger_id, route_id, res_id, seat_no, res_date) {
         try {
+            console.log({
+                passenger_id,
+                route_id,
+                res_id,
+                seat_no,
+                res_date
+            })
             await sql`
                 insert into passenger_res(route_id, passenger_id,res_id, seat_no, res_date) 
-                values (${passenger_id}, ${route_id}, ${res_id}, ${seat_no}, ${res_date});
+                values (${route_id},${passenger_id}, ${res_id}, ${seat_no}, ${res_date})
             `;
         } catch (error) {
-            if (error instanceof postgres.PostgresError) {
+            if(error instanceof postgres.PostgresError) {
                 console.log(`PostgresError : ${error.message}`);
             } else {
                 console.error(error);
@@ -63,3 +70,4 @@ class PassegerRes {
         }
     }
 }
+export let passenger_res = new PassegerRes();
