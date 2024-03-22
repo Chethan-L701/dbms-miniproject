@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BiUser } from "react-icons/bi";
 export function LoginComponent({ loginStatus }) {
     if (!loginStatus) {
         return (
@@ -14,8 +13,8 @@ export function LoginComponent({ loginStatus }) {
         let userName = JSON.parse(localStorage.getItem("user_info")).user_name;
         return (
             <Link to = "/profile">
-            <div className="text-white w-[100px] flex m-3">
-                <BiUser className="pr-2" /> {userName}
+            <div className="text-white w-[100px] flex  ml-2 bg-red-300 p-2  align-top pl-2 pr-2 rounded-md">
+                 {userName}
             </div>
             </Link>
         );

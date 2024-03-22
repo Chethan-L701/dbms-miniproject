@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/react.svg";
-//import LoginImage from "../assets/login_img.jpeg";
+import login from "../assets/login_img.jpeg";
+// import LoginImage from "../assets/home.png";
 import axios from "axios";
 
 export function LoginPage() {
@@ -11,7 +12,9 @@ export function LoginPage() {
     //<img src={LoginImage} alt="" className="h-[100vh] w-[100%]"/>
     return (
         <div className="h-full w-full flex">
-            <div className="h-[100vh] w-[60%] flex items-center justify-center"></div>
+            <div className="h-[100vh] w-[60%] flex items-center justify-center">
+                <img src={login} alt="" className="w-[100%] h-[100vh]"/>
+            </div>
             <div className="h-[100vh] w-[40%] flex justify-center items-center">
                 <div className="h-[60vh] w-[80%] flex justify-center items-center ml-[10%]]">
                     <div className="h-[30vh] w-[80%] flex-col items-center justify-center gap-4">
